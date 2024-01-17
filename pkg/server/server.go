@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"embed"
 	"errors"
 	"fmt"
 	"github.com/MR5356/go-template/config"
@@ -29,6 +30,9 @@ type Server struct {
 	config *config.Config
 }
 
+//go:embed static
+var fs embed.FS
+
 func New(config *config.Config) (server *Server, err error) {
 	if config.Server.Debug {
 		gin.SetMode(gin.DebugMode)
@@ -42,6 +46,7 @@ func New(config *config.Config) (server *Server, err error) {
 	engine.MaxMultipartMemory = 8 << 20 // 8 MiB
 	engine.Use(
 		Record(),
+		Static("/", NewStaticFileSystem(fs, "static")),
 	)
 
 	engine.NoRoute(func(c *gin.Context) {
