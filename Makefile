@@ -1,6 +1,8 @@
 NAME = app
 IMAGE_REPO = registry.cn-hangzhou.aliyuncs.com/toodo/brain
 
+MODULE ?= github.com/MR5356/go-template
+
 GOOS ?= $(shell go env GOOS)
 GOARCH ?= $(shell go env GOARCH)
 
@@ -32,3 +34,7 @@ clean: ## Remove building artifacts
 
 image: ## Build and push docker image
 	docker buildx build --platform linux/arm64,linux/amd64 -t $(IMAGE_REPO):$(VERSION) . --push
+
+update:
+	@echo "replace github.com/MR5356/go-template to $(MODULE)"
+	find . -type f -exec sed -i 's/github.com/MR5356/go-template/$(MODULE)/g' {} +
