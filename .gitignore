@@ -3,10 +3,6 @@ db.sqlite
 # 忽略swagger docs
 docs
 
-# 忽略二进制可执行文件
-*/
-!*/README.md
-
 # 忽略构建生成的文件
 bin/
 
