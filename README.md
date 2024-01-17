@@ -10,7 +10,10 @@ git clone https://github.com/MR5356/go-template.git
 ```shell
 sed -i "s#github.com/MR5356/go-template#NEW_NAME#g" `grep -rl "github.com/MR5356/go-template" .`
 ```
-
+> 如果是mac电脑，sed命令有所不同，可使用以下命令：
+```shell
+sed -i "" "s#github.com/MR5356/go-template#NEW_NAME#g" `grep -rl "github.com/MR5356/go-template" .`
+```
 ## 特性清单
 
 ### Prometheus metrics
