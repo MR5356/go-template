@@ -24,7 +24,7 @@ binary: clean deps docs ## Build binary
 test: deps docs ## Execute tests
 	go test ./...
 
-deps: ## Install dependencies using go get
+deps: docs ## Install dependencies using go get
 	go get -d -v -t ./...
 
 clean: ## Remove building artifacts
