@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/MR5356/go-template/config"
+	"github.com/MR5356/go-template/docs"
 	"github.com/MR5356/go-template/pkg/controller"
 	"github.com/MR5356/go-template/pkg/domain/demo"
 	_ "github.com/MR5356/go-template/pkg/log"
@@ -14,6 +15,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/sirupsen/logrus"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 	"net/http"
 	"os"
 	"os/signal"
@@ -53,6 +56,13 @@ func New(config *config.Config) (server *Server, err error) {
 			handler.ServeHTTP(c.Writer, c.Request)
 		}
 	}(promhttp.Handler()))
+
+	// swagger
+	docs.SwaggerInfo.Title = "API Docs"
+	docs.SwaggerInfo.Description = "This is an auto-generated API Docs."
+	docs.SwaggerInfo.Version = "1.0"
+	docs.SwaggerInfo.BasePath = config.Server.Prefix
+	api.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	demoSvc := demo.NewService()
 

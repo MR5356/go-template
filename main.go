@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	cfg := config.New(config.WithPort(1002))
+	cfg := config.New(config.WithPort(8080))
 
 	srv, err := server.New(cfg)
 	if err != nil {

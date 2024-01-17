@@ -1,2 +1,39 @@
-.idea
+# 忽略数据库
 db.sqlite
+# 忽略swagger docs
+docs
+
+# 忽略二进制可执行文件
+*/
+!*/README.md
+
+# 忽略构建生成的文件
+bin/
+
+# 忽略依赖管理工具生成的Vendor文件
+vendor/
+
+# 忽略配置文件
+*.yml
+*.yaml
+
+# 忽略Protobuf生成的*.pb.go文件
+*.pb.go
+
+# 忽略测试输出文件
+*.test
+
+# 忽略日志文件
+*.log
+
+# 忽略操作系统或者编辑器生成的文件
+.DS_Store
+.idea/
+*.swp
+*.swo
+
+# 忽略测试覆盖率文件
+*.out
+*.cover
+.coverage
+coverage.txt

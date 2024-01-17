@@ -15,6 +15,11 @@ func NewController(service *Service) *Controller {
 	}
 }
 
+//	@Summary	List demo
+//	@Tags		demo
+//	@Success	200	{object}	response.Response{data=[]Demo}
+//	@Router		/demo/list [get]
+//	@Produce	json
 func (c *Controller) handleListDemo(ctx *gin.Context) {
 	res, err := c.service.db.List(&Demo{})
 	if err != nil {

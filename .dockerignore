@@ -1,0 +1,23 @@
+# 忽略构建结果
+bin/
+
+# 忽略缓存和配置
+vendor/
+.vscode/
+.idea/
+
+# 忽略测试结果
+cover.out
+coverage.txt
+
+# 忽略日志和元数据
+logs
+*.log
+
+# 忽略git信息
+.gitignore
+.git
+
+# 忽略CI配置
+.travis.yml
+.github
