@@ -1,6 +1,16 @@
 # Go-template
 Golang 模板项目，用于快速构建一个Web项目
 
+## 使用说明
+克隆项目到本地
+```shell
+git clone https://github.com/MR5356/go-template.git
+```
+更新项目名称
+```shell
+sed -i "s#github.com/MR5356/go-template#NEW_NAME#g" `grep -rl "github.com/MR5356/go-template" .`
+```
+
 ## 特性清单
 
 ### Prometheus metrics
