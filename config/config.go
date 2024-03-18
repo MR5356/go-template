@@ -66,3 +66,15 @@ func WithDatabase(driver, dsn string) Cfg {
 		c.Database.DSN = dsn
 	}
 }
+
+func WithDebug(debug bool) Cfg {
+	return func(c *Config) {
+		c.Server.Debug = debug
+	}
+}
+
+func WithGracePeriod(period int) Cfg {
+	return func(c *Config) {
+		c.Server.GracePeriod = period
+	}
+}

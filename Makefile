@@ -13,7 +13,7 @@ VERSION ?= $(shell git symbolic-ref --short -q HEAD)-$(shell git rev-parse --sho
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-16s\033[0m %s\n", $$1, $$2}'
 
-docs: ## Generate docs
+docs: clean ## Generate docs
 	swag init
 	swag fmt
 
@@ -31,6 +31,7 @@ deps: docs ## Install dependencies using go get
 
 clean: ## Remove building artifacts
 	rm -rf bin
+	rm -rf docs
 
 image: ## Build and push docker image
 	docker buildx build --platform linux/arm64,linux/amd64 -t $(IMAGE_REPO):$(VERSION) . --push

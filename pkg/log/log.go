@@ -2,6 +2,7 @@ package log
 
 import (
 	"fmt"
+	"github.com/MR5356/go-template/config"
 	nested "github.com/antonfisher/nested-logrus-formatter"
 	"github.com/sirupsen/logrus"
 	"runtime"
@@ -9,6 +10,10 @@ import (
 
 func init() {
 	logrus.SetReportCaller(true)
+
+	if config.Current().Server.Debug {
+		logrus.SetLevel(logrus.DebugLevel)
+	}
 
 	logrus.SetFormatter(&nested.Formatter{
 		HideKeys:        false,

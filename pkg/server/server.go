@@ -97,6 +97,8 @@ func New(config *config.Config) (server *Server, err error) {
 }
 
 func (s *Server) Run() error {
+	defer s.Shutdown()
+
 	server := &http.Server{
 		Addr:    fmt.Sprintf(":%d", s.config.Server.Port),
 		Handler: s.engine,
@@ -118,4 +120,8 @@ func (s *Server) Run() error {
 	ch := <-sig
 	logrus.Infof("Received signal %s", ch.String())
 	return server.Shutdown(ctx)
+}
+
+func (s *Server) Shutdown() {
+	logrus.Info("Server is shutting down...")
 }
